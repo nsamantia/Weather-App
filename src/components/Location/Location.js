@@ -7,14 +7,14 @@ const Location = () => {
   return (
     <div>
       <form>
-        <lable>
+        <label>
           Please enter Your Zip Code:
           <input
             type="text"
             name="zipCode"
             onChange={(e) => setZipCode(e.target.value)}
           />
-        </lable>
+        </label>
       </form>
       <WeatherDisplay zipCode={zipCode} />
     </div>
