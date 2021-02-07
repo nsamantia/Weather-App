@@ -6,11 +6,12 @@ const WeatherDisplay = (props) => {
 
   const handleSubmit = () => {
     const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-    const weatherUrl = `api.openweathermap.org/data/2.5/weather?zip=${props.zipCode},us&appid=${key}`;
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${props.zipCode},us&appid=${key}`;
     axios
       .get(weatherUrl)
       .then((res) => {
         setWeatherData(res.data);
+        console.log('called');
         console.log(res.data);
       })
       .catch((error) => console.log(error));
@@ -19,7 +20,9 @@ const WeatherDisplay = (props) => {
     <div>
       <p>WeatherDisplay.js</p>
       <form>
-        <input type="submit" onClick={() => handleSubmit()} />
+        <button type="button" onClick={() => handleSubmit()}>
+          Get Weather
+        </button>
       </form>
     </div>
   );
