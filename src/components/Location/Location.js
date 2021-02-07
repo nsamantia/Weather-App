@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
+import WeatherApi from '../WeatherApi/WeatherApi';
 
 const Location = () => {
   const [zipCode, setZipCode] = useState('');
@@ -16,7 +16,7 @@ const Location = () => {
           />
         </label>
       </form>
-      <WeatherDisplay zipCode={zipCode} />
+      <WeatherApi zipCode={zipCode} />
     </div>
   );
 };
