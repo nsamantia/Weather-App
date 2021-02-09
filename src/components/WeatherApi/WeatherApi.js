@@ -7,6 +7,7 @@ const WeatherApi = (props) => {
   const [currentWeather, setCurrentWeather] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
 
+  // Pulls data from the Api then sets the vatiables with the data
   const handleSubmit = () => {
     if (props.zipCode) {
       const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
@@ -18,11 +19,12 @@ const WeatherApi = (props) => {
           setCurrentWeather(res.data.weather[0].main);
           setCurrentLocation(res.data.name);
 
-          console.log(res.data.name);
+          console.log(res.data);
         })
-        // .catch((error) => console.log(error))
+        // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
     } else {
+      // Alert user if they request weather info when the input is empty
       alert('Please Enter A Zip Code');
     }
   };
