@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../../css/main.css';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
+import ImageDisplay from '../ImageDisplay/ImageDisplay';
 
 const WeatherApi = (props) => {
   const [currentTemp, setCurrentTemp] = useState('');
@@ -45,6 +46,8 @@ const WeatherApi = (props) => {
         currentWeather={currentWeather}
         currentLocation={currentLocation}
       />
+
+      <ImageDisplay />
     </div>
   );
 };

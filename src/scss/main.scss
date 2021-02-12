@@ -1,1 +1,15 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+.image-display-fit-ontainer {
+  background-color: yellow;
+  height: 100vh;
+  width: 100vw;
+}
+
+.image-display-fit {
+  height: auto;
+  width: 60vw;
+}
+
+.test {
+  color: blue;
+}
