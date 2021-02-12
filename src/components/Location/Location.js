@@ -6,11 +6,12 @@ const Location = () => {
   const [zipCode, setZipCode] = useState('');
 
   return (
-    <div className="d-flex text-center">
-      <form>
+    <div className="text-center">
+      <form className="">
         <input
           type="text"
           name="zipCode"
+          className="floatingInput"
           placeholder="Enter Your Zip Code"
           onChange={(e) => setZipCode(e.target.value)}
         />

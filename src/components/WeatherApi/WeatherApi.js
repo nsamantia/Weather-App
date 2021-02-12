@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../../css/main.css';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 
 const WeatherApi = (props) => {
@@ -31,7 +32,11 @@ const WeatherApi = (props) => {
   return (
     <div>
       <form>
-        <button type="button" onClick={() => handleSubmit()}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => handleSubmit()}
+        >
           Get Weather
         </button>
       </form>
