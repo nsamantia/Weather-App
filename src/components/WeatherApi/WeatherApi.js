@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/main.css';
 import main from '../../assests/images/main.jpg';
@@ -6,12 +6,17 @@ import snow from '../../assests/images/snow.jpg';
 import rain from '../../assests/images/rain.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import ImageDisplay from '../ImageDisplay/ImageDisplay';
+import userEvent from '@testing-library/user-event';
 
 const WeatherApi = (props) => {
   const [currentTemp, setCurrentTemp] = useState('');
   const [currentWeather, setCurrentWeather] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [bgImage, setBgImage] = useState(main);
+
+  useEffect(() => {
+    handleImage();
+  }, [currentWeather]);
 
   // Pulls data from the Api then sets the vatiables with the data
   const handleSubmit = () => {
@@ -24,8 +29,6 @@ const WeatherApi = (props) => {
           setCurrentTemp(res.data.main.temp);
           setCurrentWeather(res.data.weather[0].main);
           setCurrentLocation(res.data.name);
-
-          console.log(res.data);
         })
         // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
@@ -33,9 +36,8 @@ const WeatherApi = (props) => {
       // Alert user if they request weather info when the input is empty
       alert('Please Enter A Zip Code');
     }
-    handleImage();
   };
-
+  // Conditionally displays image depending on CurrentWeather
   const handleImage = () => {
     if (currentWeather === 'Snow') {
       setBgImage(snow);
