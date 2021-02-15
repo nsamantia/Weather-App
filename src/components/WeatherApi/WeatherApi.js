@@ -4,6 +4,7 @@ import '../../css/main.css';
 import main from '../../assests/images/main.jpg';
 import snow from '../../assests/images/snow.jpg';
 import rain from '../../assests/images/rain.jpg';
+import pool from '../../assests/images/pool.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import ImageDisplay from '../ImageDisplay/ImageDisplay';
 import userEvent from '@testing-library/user-event';
@@ -39,12 +40,24 @@ const WeatherApi = (props) => {
   };
   // Conditionally displays image depending on CurrentWeather
   const handleImage = () => {
-    if (currentWeather === 'Snow') {
-      setBgImage(snow);
-    } else if (currentWeather === 'Rain') {
-      setBgImage(rain);
-    } else {
-      setBgImage(main);
+    //   if (currentWeather === 'Snow') {
+    //     setBgImage(snow);
+    //   } else if (currentWeather === 'Rain') {
+    //     setBgImage(rain);
+    //   } else {
+    //     setBgImage(main);
+    //   }
+    // };
+
+    switch (currentWeather) {
+      case 'Snow':
+        setBgImage(snow);
+        break;
+      case 'Rain':
+        setBgImage(rain);
+        break;
+      default:
+        setBgImage(main);
     }
   };
   return (
