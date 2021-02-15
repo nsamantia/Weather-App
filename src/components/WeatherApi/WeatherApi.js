@@ -5,6 +5,8 @@ import main from '../../assests/images/main.jpg';
 import snow from '../../assests/images/snow.jpg';
 import rain from '../../assests/images/rain.jpg';
 import pool from '../../assests/images/pool.jpg';
+import warm from '../../assests/images/warm.jpg';
+import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import ImageDisplay from '../ImageDisplay/ImageDisplay';
 import userEvent from '@testing-library/user-event';
@@ -16,7 +18,7 @@ const WeatherApi = (props) => {
   const [bgImage, setBgImage] = useState(main);
 
   useEffect(() => {
-    handleImage();
+    handleImage(currentWeather, currentTemp);
   }, [currentWeather]);
 
   // Pulls data from the Api then sets the vatiables with the data
@@ -39,22 +41,24 @@ const WeatherApi = (props) => {
     }
   };
   // Conditionally displays image depending on CurrentWeather
-  const handleImage = () => {
-    //   if (currentWeather === 'Snow') {
-    //     setBgImage(snow);
-    //   } else if (currentWeather === 'Rain') {
-    //     setBgImage(rain);
-    //   } else {
-    //     setBgImage(main);
-    //   }
-    // };
-
-    switch (currentWeather) {
-      case 'Snow':
+  const handleImage = (currentWeather, currentTemp) => {
+    switch (true) {
+      case currentWeather === 'Snow':
+      case currentTemp < 15:
         setBgImage(snow);
         break;
-      case 'Rain':
+      case currentWeather === 'Rain':
+      case currentWeather === 'Mist':
         setBgImage(rain);
+        break;
+      case currentWeather === 'Clear' && currentTemp > 79:
+        setBgImage(pool);
+        break;
+      case currentWeather === 'Clear' && currentTemp > 45 && currentTemp < 79:
+        setBgImage(warm);
+        break;
+      case currentWeather === 'Clouds' && currentTemp > 39 && currentTemp < 79:
+        setBgImage(cloudy);
         break;
       default:
         setBgImage(main);
