@@ -1,9 +1,4 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-.image-display-fit-ontainer {
-  background-color: yellow;
-  height: 100vh;
-  width: 100vw;
-}
 
 .image-display-fit {
   height: auto;
@@ -16,4 +11,7 @@
 
 button {
   margin-top: 5px;
+}
+h1 {
+  font-size: 18px;
 }

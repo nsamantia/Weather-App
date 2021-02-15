@@ -8,8 +8,6 @@ import pool from '../../assests/images/pool.jpg';
 import warm from '../../assests/images/warm.jpg';
 import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
-import ImageDisplay from '../ImageDisplay/ImageDisplay';
-import userEvent from '@testing-library/user-event';
 
 const WeatherApi = (props) => {
   const [currentTemp, setCurrentTemp] = useState('');
