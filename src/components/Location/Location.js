@@ -7,6 +7,7 @@ const Location = () => {
 
   return (
     <div className="text-center">
+      <p>Current Weather</p>
       <form className="">
         <input
           type="text"

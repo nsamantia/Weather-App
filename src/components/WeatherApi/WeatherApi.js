@@ -10,8 +10,8 @@ import userEvent from '@testing-library/user-event';
 
 const WeatherApi = (props) => {
   const [currentTemp, setCurrentTemp] = useState('');
-  const [currentWeather, setCurrentWeather] = useState('');
-  const [currentLocation, setCurrentLocation] = useState('');
+  const [currentWeather, setCurrentWeather] = useState('Weather');
+  const [currentLocation, setCurrentLocation] = useState('Location');
   const [bgImage, setBgImage] = useState(main);
 
   useEffect(() => {
