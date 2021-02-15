@@ -81,8 +81,8 @@ const WeatherApi = (props) => {
       <div className="image-display-fit-container">
         <img className="image-display-fit" src={bgImage} alt="" />
       </div>
-      <a href="https://www.freepik.com/vectors/icons">
-        Icons vector created by titusurya - www.freepik.com
+      <a href="https://www.freepik.com/vectors/winter">
+        Winter vector created by pch.vector - www.freepik.com
       </a>
     </div>
   );
