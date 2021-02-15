@@ -44,7 +44,7 @@ const WeatherApi = (props) => {
   const handleImage = (currentWeather, currentTemp) => {
     switch (true) {
       case currentWeather === 'Snow':
-      case currentTemp < 15:
+      case currentWeather === '' && currentTemp < 10:
         setBgImage(snow);
         break;
       case currentWeather === 'Rain':
