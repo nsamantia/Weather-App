@@ -3,11 +3,18 @@ import '../../css/main.css';
 
 const WeatherDisplay = (props) => {
   return (
-    <div>
-      <div>{props.currentLocation}</div>
-      <div>{Math.round(props.currentTemp)}°</div>
-      <div>{props.currentWeather}</div>
-      <div></div>
+    <div className="weather-display-container">
+      <div className="weather-info ">
+        <div>
+          <p>{props.currentLocation}</p>
+        </div>
+        <div>
+          <p>{Math.round(props.currentTemp)}°</p>
+        </div>
+        <div>
+          <p>{props.currentWeather}</p>
+        </div>
+      </div>
     </div>
   );
 };

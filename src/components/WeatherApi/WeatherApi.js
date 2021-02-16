@@ -14,6 +14,7 @@ const WeatherApi = (props) => {
   const [currentWeather, setCurrentWeather] = useState('Weather');
   const [currentLocation, setCurrentLocation] = useState('Location');
   const [bgImage, setBgImage] = useState(main);
+  const [icon, setIcon] = useState('');
 
   useEffect(() => {
     handleImage(currentWeather, currentTemp);
@@ -30,6 +31,8 @@ const WeatherApi = (props) => {
           setCurrentTemp(res.data.main.temp);
           setCurrentWeather(res.data.weather[0].main);
           setCurrentLocation(res.data.name);
+          setIcon(res.data.weather[0].icon);
+          console.log(res.data);
         })
         // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
