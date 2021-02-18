@@ -32,16 +32,16 @@ const WeatherApi = (props) => {
   }, [currentWeather]);
 
   // Pulls lon and lan info from the Api then sets the vatiables with the data
-  const getLatLon = () => {
+  const getLatLon = (callback) => {
     if (props.zipCode) {
       const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
       const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${props.zipCode},us&appid=${key}&units=imperial`;
       axios
         .get(locationUrl)
         .then((res) => {
-          setLat(res.data.coord.lat);
-          setLon(res.data.coord.lon);
-          getWeather();
+          // setLat(res.data.coord.lat);
+          // setLon(res.data.coord.lon);
+          callback(res.data.coord.lon, res.data.coord.lat);
           console.log(res.data);
         })
         // Alert user if they input an incorrect zip code
@@ -54,7 +54,7 @@ const WeatherApi = (props) => {
   };
 
   // Calls for weekly weather data
-  const getWeather = () => {
+  const getWeather = (lon, lat) => {
     if (lon && lat) {
       const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
       const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}`;
@@ -97,7 +97,7 @@ const WeatherApi = (props) => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => getLatLon()}
+          onClick={() => getLatLon(getWeather)}
         >
           Get Weather
         </button>
