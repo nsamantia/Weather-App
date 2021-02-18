@@ -10,14 +10,10 @@ import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 
 const WeatherApi = (props) => {
-  // Location info variables
-  const [lat, setLat] = useState('');
-  const [lon, setLon] = useState('');
-
   // Day 1 (Current day ) variables
   const [currentTemp, setCurrentTemp] = useState('');
-  const [currentWeather, setCurrentWeather] = useState('Weather');
-  const [currentLocation, setCurrentLocation] = useState('Location');
+  const [currentWeather, setCurrentWeather] = useState('');
+  const [currentLocation, setCurrentLocation] = useState('');
   const [icon, setIcon] = useState('');
   // Day 2 variables
   // Day 3 variables
@@ -39,8 +35,7 @@ const WeatherApi = (props) => {
       axios
         .get(locationUrl)
         .then((res) => {
-          // setLat(res.data.coord.lat);
-          // setLon(res.data.coord.lon);
+          setCurrentLocation(res.data.name);
           callback(res.data.coord.lon, res.data.coord.lat);
           console.log(res.data);
         })
@@ -57,10 +52,12 @@ const WeatherApi = (props) => {
   const getWeather = (lon, lat) => {
     if (lon && lat) {
       const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}`;
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`;
       axios
         .get(weatherUrl)
         .then((res) => {
+          setCurrentTemp(res.data.current.temp);
+          setCurrentWeather(res.data.current.weather[0].main);
           console.log(res.data);
         })
         .catch((err) => console.log(err));
