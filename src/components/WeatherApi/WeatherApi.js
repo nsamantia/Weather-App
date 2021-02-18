@@ -10,37 +10,63 @@ import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 
 const WeatherApi = (props) => {
+  // Location info variables
+  const [lat, setLat] = useState('');
+  const [lon, setLon] = useState('');
+
+  // Day 1 (Current day ) variables
   const [currentTemp, setCurrentTemp] = useState('');
   const [currentWeather, setCurrentWeather] = useState('Weather');
   const [currentLocation, setCurrentLocation] = useState('Location');
-  const [bgImage, setBgImage] = useState(main);
   const [icon, setIcon] = useState('');
+  // Day 2 variables
+  // Day 3 variables
+  // Day 4 variables
+  // Day 5 variables
+
+  //Background image variables
+  const [bgImage, setBgImage] = useState(main);
 
   useEffect(() => {
     handleImage(currentWeather, currentTemp);
   }, [currentWeather]);
 
-  // Pulls data from the Api then sets the vatiables with the data
-  const handleSubmit = () => {
+  // Pulls lon and lan info from the Api then sets the vatiables with the data
+  const getLatLon = () => {
     if (props.zipCode) {
       const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${props.zipCode},us&appid=${key}&units=imperial`;
+      const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${props.zipCode},us&appid=${key}&units=imperial`;
       axios
-        .get(weatherUrl)
+        .get(locationUrl)
         .then((res) => {
-          setCurrentTemp(res.data.main.temp);
-          setCurrentWeather(res.data.weather[0].main);
-          setCurrentLocation(res.data.name);
-          setIcon(res.data.weather[0].icon);
+          setLat(res.data.coord.lat);
+          setLon(res.data.coord.lon);
+          getWeather();
           console.log(res.data);
         })
         // Alert user if they input an incorrect zip code
-        .catch(() => alert('Invalid Zip Code'));
-    } else {
-      // Alert user if they request weather info when the input is empty
-      alert('Please Enter A Zip Code');
+        // .catch(() => alert('Invalid Zip Code'));
+        .catch((err) => console.log(err));
+      // } else {
+      //   // Alert user if they request weather info when the input is empty
+      //   alert('Please Enter A Zip Code');
     }
   };
+
+  // Calls for weekly weather data
+  const getWeather = () => {
+    if (lon && lat) {
+      const key = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}`;
+      axios
+        .get(weatherUrl)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   // Conditionally displays image depending on CurrentWeather
   const handleImage = (currentWeather, currentTemp) => {
     switch (true) {
@@ -71,7 +97,7 @@ const WeatherApi = (props) => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => handleSubmit()}
+          onClick={() => getLatLon()}
         >
           Get Weather
         </button>
