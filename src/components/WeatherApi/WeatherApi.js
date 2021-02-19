@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/main.css';
-import main from '../../assests/images/main.jpg';
-import snow from '../../assests/images/snow.jpg';
-import rain from '../../assests/images/rain.jpg';
-import pool from '../../assests/images/pool.jpg';
-import warm from '../../assests/images/warm.jpg';
-import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
+import ImageDisplay from '../ImageDisplay/ImageDisplay';
 
 const WeatherApi = (props) => {
   // Day 0 (Current day ) variables
@@ -52,13 +47,6 @@ const WeatherApi = (props) => {
   const [daySixLowTemp, setDaySixLowTemp] = useState('');
   const [daySixWeather, setDaySixWeather] = useState('');
 
-  //Background image variables
-  const [bgImage, setBgImage] = useState(main);
-
-  useEffect(() => {
-    handleImage(currentWeather, currentTemp);
-  }, [currentWeather]);
-
   // Pulls lon and lan info from the Api then sets the vatiables with the data
   const getLatLon = (callback, callback2, callback3) => {
     if (props.zipCode) {
@@ -74,14 +62,12 @@ const WeatherApi = (props) => {
           callback2(res.data.coord.lon, res.data.coord.lat);
           // getDates function
           callback3(res.data.coord.lon, res.data.coord.lat);
-          console.log(res.data);
         })
         // Alert user if they input an incorrect zip code
-        // .catch(() => alert('Invalid Zip Code'));
-        .catch((err) => console.log(err));
-      // } else {
-      //   // Alert user if they request weather info when the input is empty
-      //   alert('Please Enter A Zip Code');
+        .catch(() => alert('Invalid Zip Code'));
+    } else {
+      // Alert user if they request weather info when the input is empty
+      alert('Please Enter A Zip Code');
     }
   };
 
@@ -132,6 +118,7 @@ const WeatherApi = (props) => {
       axios
         .get(weatherUrl)
         .then((res) => {
+          // High temps
           setCurrentTemp(res.data.current.temp);
           setDayOneHighTemp(res.data.daily[1].temp.max);
           setDayTwoHighTemp(res.data.daily[2].temp.max);
@@ -140,8 +127,9 @@ const WeatherApi = (props) => {
           setDayFiveHighTemp(res.data.daily[5].temp.max);
           setDaySixHighTemp(res.data.daily[6].temp.max);
 
+          // Low temps
           setDayOneLowTemp(res.data.daily[1].temp.min);
-          setDayTwoHighTemp(res.data.daily[2].temp.min);
+          setDayTwoLowTemp(res.data.daily[2].temp.min);
           setDayThreeLowTemp(res.data.daily[3].temp.min);
           setDayFourLowTemp(res.data.daily[4].temp.min);
           setDayFiveLowTemp(res.data.daily[5].temp.min);
@@ -151,30 +139,6 @@ const WeatherApi = (props) => {
     }
   };
 
-  // Conditionally displays image depending on CurrentWeather
-  const handleImage = (currentWeather, currentTemp) => {
-    switch (true) {
-      case currentWeather === 'Snow':
-      case currentWeather === '' && currentTemp < 10:
-        setBgImage(snow);
-        break;
-      case currentWeather === 'Rain':
-      case currentWeather === 'Mist':
-        setBgImage(rain);
-        break;
-      case currentWeather === 'Clear' && currentTemp > 79:
-        setBgImage(pool);
-        break;
-      case currentWeather === 'Clear' && currentTemp > 45 && currentTemp < 79:
-        setBgImage(warm);
-        break;
-      case currentWeather === 'Clouds' && currentTemp > 39 && currentTemp < 79:
-        setBgImage(cloudy);
-        break;
-      default:
-        setBgImage(main);
-    }
-  };
   return (
     <div>
       <form>
@@ -191,12 +155,8 @@ const WeatherApi = (props) => {
         currentWeather={currentWeather}
         currentLocation={currentLocation}
       />
-      <div className="image-display-fit-container">
-        <img className="image-display-fit" src={bgImage} alt="" />
-      </div>
-      <a href="https://www.freepik.com/vectors/winter">
-        Winter vector created by pch.vector - www.freepik.com
-      </a>
+
+      <ImageDisplay currentWeather={currentWeather} currentTemp={currentTemp} />
     </div>
   );
 };
