@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../css/main.css';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import ImageDisplay from '../ImageDisplay/ImageDisplay';
+import WeeklyWeatherDisplay from '../WeeklyWeatherDisplay/WeeklyWeatherDisplay';
 
 const WeatherApi = (props) => {
   // Day 0 (Current day ) variables
@@ -80,12 +81,24 @@ const WeatherApi = (props) => {
         .get(weatherUrl)
         .then((res) => {
           console.log(res.data);
-          setDayOneDate(new Date(res.data.daily[1].dt));
-          setDayTwoDate(new Date(res.data.daily[2].dt));
-          setDayThreeDate(new Date(res.data.daily[3].dt));
-          setDayFourDate(new Date(res.data.daily[4].dt));
-          setDayFiveDate(new Date(res.data.daily[5].dt));
-          setDaySixDate(new Date(res.data.daily[6].dt));
+          setDayOneDate(
+            new Date(res.data.daily[1].dt * 1000).toString().substring(0, 3)
+          );
+          setDayTwoDate(
+            new Date(res.data.daily[2].dt * 1000).toString().substring(0, 3)
+          );
+          setDayThreeDate(
+            new Date(res.data.daily[3].dt * 1000).toString().substring(0, 3)
+          );
+          setDayFourDate(
+            new Date(res.data.daily[4].dt * 1000).toString().substring(0, 3)
+          );
+          setDayFiveDate(
+            new Date(res.data.daily[5].dt * 1000).toString().substring(0, 3)
+          );
+          setDaySixDate(
+            new Date(res.data.daily[6].dt * 1000).toString().substring(0, 3)
+          );
         })
         .catch((err) => console.log(err));
     }
@@ -155,7 +168,36 @@ const WeatherApi = (props) => {
         currentWeather={currentWeather}
         currentLocation={currentLocation}
       />
-
+      <WeeklyWeatherDisplay
+        // Dates
+        dayOneDate={dayOneDate}
+        dayTwoDate={dayTwoDate}
+        dayThreeDate={dayThreeDate}
+        dayFourDate={dayFourDate}
+        dayFiveDate={dayFiveDate}
+        daySixDate={daySixDate}
+        // High temps
+        dayOneHighTemp={dayOneHighTemp}
+        dayTwoHighTemp={dayTwoHighTemp}
+        dayThreeHighTemp={dayThreeHighTemp}
+        dayFourHighTemp={dayFourHighTemp}
+        dayFighHighTemp={dayFiveHighTemp}
+        daySixHighTemp={daySixHighTemp}
+        // Low Temps
+        dayOneLowTemp={dayOneLowTemp}
+        dayTwoLowTemp={dayTwoLowTemp}
+        dayThreeLowTemp={dayThreeLowTemp}
+        dayFourLowTemp={dayFourLowTemp}
+        dayFiveLowTemp={dayFiveLowTemp}
+        daySixLowTemp={daySixLowTemp}
+        // Weather
+        dayOneWeather={dayOneWeather}
+        dayTwoWeather={dayTwoWeather}
+        dayThreeWeather={dayThreeWeather}
+        dayFourWeather={dayFourWeather}
+        dayFiveWeather={dayFiveWeather}
+        daySixWeather={daySixWeather}
+      />
       <ImageDisplay currentWeather={currentWeather} currentTemp={currentTemp} />
     </div>
   );

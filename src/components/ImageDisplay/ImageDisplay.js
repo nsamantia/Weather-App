@@ -41,7 +41,6 @@ const ImageDisplay = (props) => {
   };
   return (
     <div>
-      <p>ImageDisplay.js</p>
       <div className="image-display-fit-container">
         <img className="image-display-fit" src={bgImage} alt="" />
       </div>
