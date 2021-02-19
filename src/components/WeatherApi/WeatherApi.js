@@ -10,15 +10,41 @@ import cloudy from '../../assests/images/cloudy.jpg';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 
 const WeatherApi = (props) => {
-  // Day 1 (Current day ) variables
+  // Day 0 (Current day ) variables
   const [currentTemp, setCurrentTemp] = useState('');
   const [currentWeather, setCurrentWeather] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [icon, setIcon] = useState('');
+
+  // Day 1 variables
+  const [dayOneDate, setDayOneDate] = useState('');
+  const [dayOneTemp, setDayOneTemp] = useState('');
+  const [dayOneWeather, setDayOneWeather] = useState('');
+
   // Day 2 variables
+  const [dayTwoDate, setDayTwoDate] = useState('');
+  const [dayTwoTemp, setDayTwoTemp] = useState('');
+  const [dayTwoWeather, setDayTwoWeather] = useState('');
+
   // Day 3 variables
+  const [dayThreeDate, setDayThreeDate] = useState('');
+  const [dayThreeTemp, setDayThreeTemp] = useState('');
+  const [dayThreeWeather, setDayThreeWeather] = useState('');
+
   // Day 4 variables
+  const [dayFourDate, setDayFourDate] = useState('');
+  const [dayFourTemp, setDayFourTemp] = useState('');
+  const [dayFourWeather, setDayFourWeather] = useState('');
+
   // Day 5 variables
+  const [dayFiveDate, setDayFiveDate] = useState('');
+  const [dayFiveTemp, setDayFiveTemp] = useState('');
+  const [dayFiveWeather, setDayFiveWeather] = useState('');
+
+  // Day 6 variables
+  const [daySixDate, setDaySixDate] = useState('');
+  const [daySixTemp, setDaySixTemp] = useState('');
+  const [daySixWeather, setDaySixWeather] = useState('');
 
   //Background image variables
   const [bgImage, setBgImage] = useState(main);
@@ -59,6 +85,12 @@ const WeatherApi = (props) => {
           setCurrentTemp(res.data.current.temp);
           setCurrentWeather(res.data.current.weather[0].main);
           console.log(res.data);
+          setDayOneDate(new Date(res.data.daily[1].dt));
+          setDayTwoDate(new Date(res.data.daily[2].dt));
+          setDayThreeDate(new Date(res.data.daily[3].dt));
+          setDayFourDate(new Date(res.data.daily[4].dt));
+          setDayFiveDate(new Date(res.data.daily[5].dt));
+          setDaySixDate(new Date(res.data.daily[6].dt));
         })
         .catch((err) => console.log(err));
     }
