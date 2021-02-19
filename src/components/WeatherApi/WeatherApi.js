@@ -181,7 +181,7 @@ const WeatherApi = (props) => {
         dayTwoHighTemp={dayTwoHighTemp}
         dayThreeHighTemp={dayThreeHighTemp}
         dayFourHighTemp={dayFourHighTemp}
-        dayFighHighTemp={dayFiveHighTemp}
+        dayFiveHighTemp={dayFiveHighTemp}
         daySixHighTemp={daySixHighTemp}
         // Low Temps
         dayOneLowTemp={dayOneLowTemp}
