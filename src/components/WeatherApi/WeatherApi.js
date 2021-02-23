@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/main.css';
+import Loader from 'react-loader-spinner';
 import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
 import ImageDisplay from '../ImageDisplay/ImageDisplay';
 import WeeklyWeatherDisplay from '../WeeklyWeatherDisplay/WeeklyWeatherDisplay';
@@ -74,7 +75,7 @@ const WeatherApi = (props) => {
           setIsNotRequested(false);
           setTimeout(() => {
             setIsLoading(false);
-          }, 1000);
+          }, 1200);
         })
         // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
@@ -181,7 +182,9 @@ const WeatherApi = (props) => {
           Please type in a zip code to receive the weather for the next week.
         </p>
       ) : isLoading ? (
-        <p>LOADING</p>
+        <div>
+          <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
+        </div>
       ) : (
         <div>
           <WeatherDisplay
