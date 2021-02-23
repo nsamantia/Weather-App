@@ -225,47 +225,6 @@ const WeatherApi = (props) => {
           />
         </div>
       )}
-      {/*<div>
-          <WeatherDisplay
-            currentTemp={currentTemp}
-            currentWeather={currentWeather}
-            currentLocation={currentLocation}
-          />
-          <WeeklyWeatherDisplay
-            // Dates
-            dayOneDate={dayOneDate}
-            dayTwoDate={dayTwoDate}
-            dayThreeDate={dayThreeDate}
-            dayFourDate={dayFourDate}
-            dayFiveDate={dayFiveDate}
-            daySixDate={daySixDate}
-            // High temps
-            dayOneHighTemp={dayOneHighTemp}
-            dayTwoHighTemp={dayTwoHighTemp}
-            dayThreeHighTemp={dayThreeHighTemp}
-            dayFourHighTemp={dayFourHighTemp}
-            dayFiveHighTemp={dayFiveHighTemp}
-            daySixHighTemp={daySixHighTemp}
-            // Low Temps
-            dayOneLowTemp={dayOneLowTemp}
-            dayTwoLowTemp={dayTwoLowTemp}
-            dayThreeLowTemp={dayThreeLowTemp}
-            dayFourLowTemp={dayFourLowTemp}
-            dayFiveLowTemp={dayFiveLowTemp}
-            daySixLowTemp={daySixLowTemp}
-            // Weather
-            dayOneWeather={dayOneWeather}
-            dayTwoWeather={dayTwoWeather}
-            dayThreeWeather={dayThreeWeather}
-            dayFourWeather={dayFourWeather}
-            dayFiveWeather={dayFiveWeather}
-            daySixWeather={daySixWeather}
-          />
-          <ImageDisplay
-            currentWeather={currentWeather}
-            currentTemp={currentTemp}
-          />
-        </div>*/}
     </div>
   );
 };
