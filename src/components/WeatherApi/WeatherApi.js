@@ -6,6 +6,12 @@ import ImageDisplay from '../ImageDisplay/ImageDisplay';
 import WeeklyWeatherDisplay from '../WeeklyWeatherDisplay/WeeklyWeatherDisplay';
 
 const WeatherApi = (props) => {
+  // Used to display nothing when user has yet to request any weather yet
+  const [isNotRequested, setIsNotRequested] = useState(true);
+
+  //  For loader spinning after requesting weather info
+  const [isLoading, setIsLoading] = useState(false);
+
   // Day 0 (Current day ) variables
   const [currentTemp, setCurrentTemp] = useState('');
   const [currentWeather, setCurrentWeather] = useState('');
@@ -63,6 +69,8 @@ const WeatherApi = (props) => {
           callback2(res.data.coord.lon, res.data.coord.lat);
           // getDates function
           callback3(res.data.coord.lon, res.data.coord.lat);
+          // Sets to fasle so inorder to desplay weather info
+          setIsNotRequested(false);
         })
         // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
@@ -163,42 +171,55 @@ const WeatherApi = (props) => {
           Get Weather
         </button>
       </form>
-      <WeatherDisplay
-        currentTemp={currentTemp}
-        currentWeather={currentWeather}
-        currentLocation={currentLocation}
-      />
-      <WeeklyWeatherDisplay
-        // Dates
-        dayOneDate={dayOneDate}
-        dayTwoDate={dayTwoDate}
-        dayThreeDate={dayThreeDate}
-        dayFourDate={dayFourDate}
-        dayFiveDate={dayFiveDate}
-        daySixDate={daySixDate}
-        // High temps
-        dayOneHighTemp={dayOneHighTemp}
-        dayTwoHighTemp={dayTwoHighTemp}
-        dayThreeHighTemp={dayThreeHighTemp}
-        dayFourHighTemp={dayFourHighTemp}
-        dayFiveHighTemp={dayFiveHighTemp}
-        daySixHighTemp={daySixHighTemp}
-        // Low Temps
-        dayOneLowTemp={dayOneLowTemp}
-        dayTwoLowTemp={dayTwoLowTemp}
-        dayThreeLowTemp={dayThreeLowTemp}
-        dayFourLowTemp={dayFourLowTemp}
-        dayFiveLowTemp={dayFiveLowTemp}
-        daySixLowTemp={daySixLowTemp}
-        // Weather
-        dayOneWeather={dayOneWeather}
-        dayTwoWeather={dayTwoWeather}
-        dayThreeWeather={dayThreeWeather}
-        dayFourWeather={dayFourWeather}
-        dayFiveWeather={dayFiveWeather}
-        daySixWeather={daySixWeather}
-      />
-      <ImageDisplay currentWeather={currentWeather} currentTemp={currentTemp} />
+      {/* Ternary displays instructions before a user requests their first set of info / once requested it displays info*/}
+      {isNotRequested ? (
+        <p>
+          Please type in a zip code to receive the weather for the next week.
+        </p>
+      ) : (
+        <div>
+          {' '}
+          <WeatherDisplay
+            currentTemp={currentTemp}
+            currentWeather={currentWeather}
+            currentLocation={currentLocation}
+          />
+          <WeeklyWeatherDisplay
+            // Dates
+            dayOneDate={dayOneDate}
+            dayTwoDate={dayTwoDate}
+            dayThreeDate={dayThreeDate}
+            dayFourDate={dayFourDate}
+            dayFiveDate={dayFiveDate}
+            daySixDate={daySixDate}
+            // High temps
+            dayOneHighTemp={dayOneHighTemp}
+            dayTwoHighTemp={dayTwoHighTemp}
+            dayThreeHighTemp={dayThreeHighTemp}
+            dayFourHighTemp={dayFourHighTemp}
+            dayFiveHighTemp={dayFiveHighTemp}
+            daySixHighTemp={daySixHighTemp}
+            // Low Temps
+            dayOneLowTemp={dayOneLowTemp}
+            dayTwoLowTemp={dayTwoLowTemp}
+            dayThreeLowTemp={dayThreeLowTemp}
+            dayFourLowTemp={dayFourLowTemp}
+            dayFiveLowTemp={dayFiveLowTemp}
+            daySixLowTemp={daySixLowTemp}
+            // Weather
+            dayOneWeather={dayOneWeather}
+            dayTwoWeather={dayTwoWeather}
+            dayThreeWeather={dayThreeWeather}
+            dayFourWeather={dayFourWeather}
+            dayFiveWeather={dayFiveWeather}
+            daySixWeather={daySixWeather}
+          />
+          <ImageDisplay
+            currentWeather={currentWeather}
+            currentTemp={currentTemp}
+          />
+        </div>
+      )}
     </div>
   );
 };

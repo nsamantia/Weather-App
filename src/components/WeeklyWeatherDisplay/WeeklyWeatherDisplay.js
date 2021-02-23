@@ -2,36 +2,44 @@ import React from 'react';
 
 const WeeklyWeatherDisplay = (props) => {
   return (
-    <div>
+    <div className="week-container text-center">
       <div>
-        <div>{props.dayOneDate}</div>
-        <div>H: {Math.round(props.dayOneHighTemp)}</div>
-        <div>L: {Math.round(props.dayOneLowTemp)}</div>
+        <p>
+          <br />
+        </p>
+        <p>High</p>
+        <p>Low</p>
+      </div>
+      <div></div>
+      <div>
+        <p>{props.dayOneDate}</p>
+        <p>{Math.round(props.dayOneHighTemp)}</p>
+        <p>{Math.round(props.dayOneLowTemp)}</p>
       </div>
       <div>
-        <div>{props.dayTwoDate}</div>
-        <div>H: {Math.round(props.dayTwoHighTemp)}</div>
-        <div>L: {Math.round(props.dayTwoLowTemp)}</div>
+        <p>{props.dayTwoDate}</p>
+        <p>{Math.round(props.dayTwoHighTemp)}</p>
+        <p>{Math.round(props.dayTwoLowTemp)}</p>
       </div>
       <div>
-        <div>{props.dayThreeDate}</div>
-        <div>H: {Math.round(props.dayThreeHighTemp)}</div>
-        <div>L: {Math.round(props.dayThreeLowTemp)}</div>
+        <p>{props.dayThreeDate}</p>
+        <p>{Math.round(props.dayThreeHighTemp)}</p>
+        <p>{Math.round(props.dayThreeLowTemp)}</p>
       </div>
       <div>
-        <div>{props.dayFourDate}</div>
-        <div>H: {Math.round(props.dayFourHighTemp)}</div>
-        <div>L: {Math.round(props.dayFourLowTemp)}</div>
+        <p>{props.dayFourDate}</p>
+        <p>{Math.round(props.dayFourHighTemp)}</p>
+        <p>{Math.round(props.dayFourLowTemp)}</p>
       </div>
       <div>
-        <div>{props.dayFiveDate}</div>
-        <div>H: {Math.round(props.dayFiveHighTemp)}</div>
-        <div>L: {Math.round(props.dayFiveLowTemp)}</div>
+        <p>{props.dayFiveDate}</p>
+        <p>{Math.round(props.dayFiveHighTemp)}</p>
+        <p>{Math.round(props.dayFiveLowTemp)}</p>
       </div>
       <div>
-        <div>{props.daySixDate}</div>
-        <div>H: {Math.round(props.daySixHighTemp)}</div>
-        <div>L: {Math.round(props.dayOneLowTemp)}</div>
+        <p>{props.daySixDate}</p>
+        <p>{Math.round(props.daySixHighTemp)}</p>
+        <p>{Math.round(props.dayOneLowTemp)}</p>
       </div>
     </div>
   );

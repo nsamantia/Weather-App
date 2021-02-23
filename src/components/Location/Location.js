@@ -17,6 +17,7 @@ const Location = () => {
           onChange={(e) => setZipCode(e.target.value)}
         />
       </form>
+
       <WeatherApi zipCode={zipCode} />
     </div>
   );
