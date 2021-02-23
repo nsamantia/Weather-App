@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/main.css';
-import main from '../../assests/images/main.jpg';
-import snow from '../../assests/images/snow.jpg';
-import rain from '../../assests/images/rain.jpg';
-import pool from '../../assests/images/pool.jpg';
-import warm from '../../assests/images/warm.jpg';
-import cloudy from '../../assests/images/cloudy.jpg';
+import Main from '../../assests/images/main.jpg';
+import Snow from '../../assests/images/snow.jpg';
+import Rain from '../../assests/images/rain.jpg';
+import Pool from '../../assests/images/pool.jpg';
+import Warm from '../../assests/images/warm.jpg';
+import Cloudy from '../../assests/images/cloudy.jpg';
 
 const ImageDisplay = (props) => {
   //Background image variables
-  const [bgImage, setBgImage] = useState(main);
+  const [bgImage, setBgImage] = useState(Main);
 
   useEffect(() => {
     handleImage(props.currentWeather, props.currentTemp);
@@ -20,23 +20,23 @@ const ImageDisplay = (props) => {
     switch (true) {
       case currentWeather === 'Snow':
         //   case currentTemp < 10 && currentTemp !== '':
-        setBgImage(snow);
+        setBgImage(Snow);
         break;
       case currentWeather === 'Rain':
       case currentWeather === 'Mist':
-        setBgImage(rain);
+        setBgImage(Rain);
         break;
       case currentWeather === 'Clear' && currentTemp > 79:
-        setBgImage(pool);
+        setBgImage(Pool);
         break;
       case currentWeather === 'Clear' && currentTemp > 45 && currentTemp < 79:
-        setBgImage(warm);
+        setBgImage(Warm);
         break;
       case currentWeather === 'Clouds' && currentTemp > 39 && currentTemp < 79:
-        setBgImage(cloudy);
+        setBgImage(Cloudy);
         break;
       default:
-        setBgImage(main);
+        setBgImage(Main);
     }
   };
   return (

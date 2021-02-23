@@ -17,43 +17,48 @@ const WeatherApi = (props) => {
   const [currentTemp, setCurrentTemp] = useState('');
   const [currentWeather, setCurrentWeather] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
-  const [icon, setIcon] = useState('');
 
   // Day 1 variables
   const [dayOneDate, setDayOneDate] = useState('');
   const [dayOneHighTemp, setDayOneHighTemp] = useState('');
   const [dayOneLowTemp, setDayOneLowTemp] = useState('');
   const [dayOneWeather, setDayOneWeather] = useState('');
+  const [dayOneIcon, setDayOneIcon] = useState('');
 
   // Day 2 variables
   const [dayTwoDate, setDayTwoDate] = useState('');
   const [dayTwoHighTemp, setDayTwoHighTemp] = useState('');
   const [dayTwoLowTemp, setDayTwoLowTemp] = useState('');
   const [dayTwoWeather, setDayTwoWeather] = useState('');
+  const [dayTwoIcon, setDayTwoIcon] = useState('');
 
   // Day 3 variables
   const [dayThreeDate, setDayThreeDate] = useState('');
   const [dayThreeHighTemp, setDayThreeHighTemp] = useState('');
   const [dayThreeLowTemp, setDayThreeLowTemp] = useState('');
   const [dayThreeWeather, setDayThreeWeather] = useState('');
+  const [dayThreeIcon, setDayThreeIcon] = useState('');
 
   // Day 4 variables
   const [dayFourDate, setDayFourDate] = useState('');
   const [dayFourHighTemp, setDayFourHighTemp] = useState('');
   const [dayFourLowTemp, setDayFourLowTemp] = useState('');
   const [dayFourWeather, setDayFourWeather] = useState('');
+  const [dayFourIcon, setDayFourIcon] = useState('');
 
   // Day 5 variables
   const [dayFiveDate, setDayFiveDate] = useState('');
   const [dayFiveHighTemp, setDayFiveHighTemp] = useState('');
   const [dayFiveLowTemp, setDayFiveLowTemp] = useState('');
   const [dayFiveWeather, setDayFiveWeather] = useState('');
+  const [dayFiveIcon, setDayFiveIcon] = useState('');
 
   // Day 6 variables
   const [daySixDate, setDaySixDate] = useState('');
   const [daySixHighTemp, setDaySixHighTemp] = useState('');
   const [daySixLowTemp, setDaySixLowTemp] = useState('');
   const [daySixWeather, setDaySixWeather] = useState('');
+  const [daySixIcon, setDaysixIcon] = useState('');
 
   // Pulls lon and lan info from the Api then sets the vatiables with the data
   const getLatLon = (callback, callback2, callback3) => {
@@ -131,6 +136,14 @@ const WeatherApi = (props) => {
           setDayFourWeather(res.data.daily[4].weather[0].main);
           setDayFiveWeather(res.data.daily[5].weather[0].main);
           setDaySixWeather(res.data.daily[6].weather[0].main);
+
+          // Setting state for icon info
+          setDayOneIcon(`Icon${res.data.daily[1].weather[0].icon}`);
+          setDayTwoIcon(`Icon${res.data.daily[2].weather[0].icon}`);
+          setDayThreeIcon(`Icon${res.data.daily[3].weather[0].icon}`);
+          setDayFourIcon(`Icon${res.data.daily[4].weather[0].icon}`);
+          setDayFiveIcon(`Icon${res.data.daily[5].weather[0].icon}`);
+          setDaysixIcon(`Icon${res.data.daily[6].weather[0].icon}`);
           console.log(res.data);
         })
         .catch((err) => console.log(err));
@@ -207,7 +220,7 @@ const WeatherApi = (props) => {
             dayFourHighTemp={dayFourHighTemp}
             dayFiveHighTemp={dayFiveHighTemp}
             daySixHighTemp={daySixHighTemp}
-            // Low Temps
+            // Low temps
             dayOneLowTemp={dayOneLowTemp}
             dayTwoLowTemp={dayTwoLowTemp}
             dayThreeLowTemp={dayThreeLowTemp}
@@ -221,6 +234,13 @@ const WeatherApi = (props) => {
             dayFourWeather={dayFourWeather}
             dayFiveWeather={dayFiveWeather}
             daySixWeather={daySixWeather}
+            // Icon codes
+            dayOneIcon={dayOneIcon}
+            dayTwoIcon={dayTwoIcon}
+            dayThreeIcon={dayThreeIcon}
+            dayFourIcon={dayFourIcon}
+            dayFiveIcon={dayFiveIcon}
+            daySixIcon={daySixIcon}
           />
           <ImageDisplay
             currentWeather={currentWeather}
