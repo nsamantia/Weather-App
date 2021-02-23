@@ -62,6 +62,7 @@ const WeatherApi = (props) => {
       axios
         .get(locationUrl)
         .then((res) => {
+          setIsLoading(true);
           setCurrentLocation(res.data.name);
           // getDates function
           callback(res.data.coord.lon, res.data.coord.lat);
@@ -71,6 +72,9 @@ const WeatherApi = (props) => {
           callback3(res.data.coord.lon, res.data.coord.lat);
           // Sets to fasle so inorder to desplay weather info
           setIsNotRequested(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
         })
         // Alert user if they input an incorrect zip code
         .catch(() => alert('Invalid Zip Code'));
@@ -176,9 +180,10 @@ const WeatherApi = (props) => {
         <p>
           Please type in a zip code to receive the weather for the next week.
         </p>
+      ) : isLoading ? (
+        <p>LOADING</p>
       ) : (
         <div>
-          {' '}
           <WeatherDisplay
             currentTemp={currentTemp}
             currentWeather={currentWeather}
@@ -220,6 +225,47 @@ const WeatherApi = (props) => {
           />
         </div>
       )}
+      {/*<div>
+          <WeatherDisplay
+            currentTemp={currentTemp}
+            currentWeather={currentWeather}
+            currentLocation={currentLocation}
+          />
+          <WeeklyWeatherDisplay
+            // Dates
+            dayOneDate={dayOneDate}
+            dayTwoDate={dayTwoDate}
+            dayThreeDate={dayThreeDate}
+            dayFourDate={dayFourDate}
+            dayFiveDate={dayFiveDate}
+            daySixDate={daySixDate}
+            // High temps
+            dayOneHighTemp={dayOneHighTemp}
+            dayTwoHighTemp={dayTwoHighTemp}
+            dayThreeHighTemp={dayThreeHighTemp}
+            dayFourHighTemp={dayFourHighTemp}
+            dayFiveHighTemp={dayFiveHighTemp}
+            daySixHighTemp={daySixHighTemp}
+            // Low Temps
+            dayOneLowTemp={dayOneLowTemp}
+            dayTwoLowTemp={dayTwoLowTemp}
+            dayThreeLowTemp={dayThreeLowTemp}
+            dayFourLowTemp={dayFourLowTemp}
+            dayFiveLowTemp={dayFiveLowTemp}
+            daySixLowTemp={daySixLowTemp}
+            // Weather
+            dayOneWeather={dayOneWeather}
+            dayTwoWeather={dayTwoWeather}
+            dayThreeWeather={dayThreeWeather}
+            dayFourWeather={dayFourWeather}
+            dayFiveWeather={dayFiveWeather}
+            daySixWeather={daySixWeather}
+          />
+          <ImageDisplay
+            currentWeather={currentWeather}
+            currentTemp={currentTemp}
+          />
+        </div>*/}
     </div>
   );
 };
