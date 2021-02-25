@@ -20,11 +20,7 @@ import Icon50d from '../../assests/icons/50d.png';
 import Icon50n from '../../assests/icons/50n.png';
 
 const WeeklyWeatherDisplay = (props) => {
-  //   const [dayOneIcon, setDayOneIcon] = useState(props.dayOneIcon);
-  //   console.log(dayOneIcon);
-  console.log(props.dayOneIcon);
-
-  let iconObj = {
+  const iconObj = {
     Icon01d: Icon01d,
     Icon01n: Icon01n,
     Icon02d: Icon02d,
@@ -50,8 +46,15 @@ const WeeklyWeatherDisplay = (props) => {
         <p>
           <br />
         </p>
-        <p>High</p>
-        <p>Low</p>
+        <p>
+          <br />
+        </p>
+        <div className="high-container">
+          <p className="high-low">High</p>
+        </div>
+        <div className="low-container">
+          <p className="high-low">Low</p>
+        </div>
       </div>
       <div></div>
       <div className="single-day">

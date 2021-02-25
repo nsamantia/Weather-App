@@ -6,13 +6,11 @@ const WeatherDisplay = (props) => {
     <div className="weather-display-container">
       <div className="weather-info ">
         <div>
-          <p>{props.currentLocation}</p>
+          <p className="city">{props.currentLocation}</p>
+          <p className="forcast">{props.currentWeather}</p>
         </div>
         <div>
-          <p>{Math.round(props.currentTemp)}°</p>
-        </div>
-        <div>
-          <p>{props.currentWeather}</p>
+          <p className="temp">{Math.round(props.currentTemp)}°</p>
         </div>
       </div>
     </div>
