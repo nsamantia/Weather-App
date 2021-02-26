@@ -72,3 +72,20 @@ h1 {
 .low-container {
   height: 30px;
 }
+
+.credit {
+  font-size: 8px;
+}
+
+@media only screen and(min-width: 630px) {
+  .image-display-fit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+
+    img {
+      width: 300px;
+    }
+  }
+}

@@ -44,7 +44,7 @@ const ImageDisplay = (props) => {
       <div className="image-display-fit-container">
         <img className="image-display-fit" src={bgImage} alt="" />
       </div>
-      <a href="https://www.freepik.com/vectors/winter">
+      <a className="credit" href="https://www.freepik.com/vectors/winter">
         Winter vector created by pch.vector - www.freepik.com
       </a>
     </div>
