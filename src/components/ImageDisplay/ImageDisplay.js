@@ -9,7 +9,7 @@ import Cloudy from '../../assests/images/cloudy.jpg';
 
 const ImageDisplay = (props) => {
   //Background image variables
-  const [bgImage, setBgImage] = useState(Main);
+  const [bgImage, setBgImage] = useState();
 
   useEffect(() => {
     handleImage(props.currentWeather, props.currentTemp);
