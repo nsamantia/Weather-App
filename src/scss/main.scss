@@ -76,6 +76,10 @@ h1 {
 .credit {
   font-size: 8px;
 }
+.into {
+  font-family: $secondary-font;
+  padding: 20px;
+}
 
 @media only screen and(min-width: 630px) {
   .image-display-fit-container {

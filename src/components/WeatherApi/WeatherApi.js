@@ -191,7 +191,7 @@ const WeatherApi = (props) => {
       </form>
       {/* Ternary displays instructions before a user requests their first set of info / once requested it displays info*/}
       {isNotRequested ? (
-        <p>
+        <p className="into">
           Please type in a zip code to receive the weather for the next week.
         </p>
       ) : isLoading ? (
